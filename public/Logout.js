@@ -1,15 +1,12 @@
-import './App.css';
-import React, { useState } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css"
-import LoginBox from './LoginBox'
-
 import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom'; // <Link to={`/url/${i}}> instead of <a href>
+import axios from "axios";
 
-function App() {
-  const [token, setToken] = useState(0);
+const API_URL = "http://localhost:8080/api/auth/";
+
+
+function Logout() {
   return (
-    <div className="App">
-     <LoginBox />
+    <div className="Logout">
       <Router>
       <Switch>
         <Route>
@@ -26,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default Logout;
