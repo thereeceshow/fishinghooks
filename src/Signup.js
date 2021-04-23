@@ -3,9 +3,11 @@
 import React, { useState, useCallback } from 'react';
 import fish from './fish.svg'
 import axios from "axios";
+import {useHistory} from 'react-router-dom';
 
 const Signup = (props) => {
     const [newSignUp, setNewSignUp] = useState({})
+    let history = useHistory()
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -17,6 +19,7 @@ const Signup = (props) => {
             .then(function(response) {
                 console.log(response)
                 props.saveToken(response.data.data.token);
+                history.push('/dash')
             })
             .catch(function(error) {
                 console.log(error);

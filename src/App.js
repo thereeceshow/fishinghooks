@@ -1,9 +1,9 @@
 import './App.css';
-import React, { useState } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css"
+import React, { useState, useEffect } from 'react';
 import Signup from './Signup'
 import Login from './Login'
 import Dash from './Dash'
+import Nav from './Nav'
 // import axios from "axios";
 
 import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom'; // <Link to={`/url/${i}}> instead of <a href>
@@ -17,9 +17,25 @@ const App = () => {
     window.localStorage.setItem('token', token);
   }
 
+  function deleteToken() {
+    setToken('');
+    window.localStorage.removeItem('token');
+  }
+
+  useEffect(() => {
+    let lsToken = window.localStorage.getItem('token')
+    if (lsToken) {
+      saveToken(lsToken)
+    }
+  }, [])
+
   return (
     <div className="App">
     <Router>
+    <Nav
+      token={token}
+      deleteToken={deleteToken}
+    />
       <Switch>
         <Route exact={true} path="/signup">
           <Signup saveToken={saveToken} />

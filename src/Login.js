@@ -1,11 +1,13 @@
 //import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom'; // <Link to={`/url/${i}}> instead of <a href>
 // import React from 'react'
 import React, { useState, useCallback } from 'react';
+import {useHistory} from 'react-router-dom';
 import fish from './fish.svg'
 import axios from "axios";
 
 const Login = (props) => {
     const [newLogin, setNewLogin] = useState({})
+    let history = useHistory()
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -23,6 +25,7 @@ const Login = (props) => {
             .then(function(response) {
                 // console.log(response)
                 props.saveToken(response.data.access_token);
+                history.push('/dash')
             })
             .catch(function(error) {
                 console.log(error);
