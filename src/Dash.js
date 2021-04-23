@@ -3,18 +3,7 @@
 function Dash() {
   return (
     <div className="Dash">
-      <Router>
-      <Switch>
-        <Route>
-          {/* <Comp /> */}
-
-        </Route>
-      </Switch>
-
-
-
-
-      </Router>
+      Welcome to the Dashboard
     </div>
   );
 }
